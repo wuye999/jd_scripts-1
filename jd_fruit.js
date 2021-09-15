@@ -159,16 +159,16 @@ function runTimes() {
 function autoInsert() {
   return new Promise((resolve, reject) => {
     $.get({
-      url: `http://auto.jdsharecode.xyz/api/autoInsert?uid=${process.env.TG_USER_ID ?? ''}&token=${encodeURIComponent(process.env.TG_USER_TOKEN_HW) ?? ''}&sharecode=${$.farmInfo.farmUserPro.shareCode}`
+      url: `http://auto.jdsharecode.xyz/api/autoInsert/farm?uid=${process.env.TG_USER_ID ?? ''}&token=${encodeURIComponent(process.env.TG_USER_TOKEN_HW) ?? ''}&sharecode=${$.farmInfo.farmUserPro.shareCode}`
     }, (err, resp, data) => {
       if (err) {
-        console.log('上报失败', err)
+        console.log('自动提交失败', err)
         resolve(err)
       } else {
         if (data === '1' || data === '0') {
-          console.log('上报成功')
+          console.log('自动提交成功')
         } else {
-          console.log('上报失败:', data)
+          console.log('自动提交失败:', data)
         }
         resolve()
       }
